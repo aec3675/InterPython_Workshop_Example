@@ -2,6 +2,7 @@
 
 import pandas as pd
 import pytest
+import numpy as np
 
 @pytest.mark.parametrize(
     "test_df, test_colname, expected",
@@ -156,6 +157,21 @@ def test_max_mag_strings():
         "b",
         pd.Series(data=[1,0.285,0,0.285]),
         ValueError),
+        (np.array([[8, 9, 1],
+                   [3, 2, 1],
+                   [5, 7, 2],
+                   [9, 8, 7]]),
+        0,
+        None,
+        TypeError),
+        (pd.DataFrame(data=[[0, 0, 0], 
+                            [0, 0, 0], 
+                            [0, 0, 0], 
+                            [0, 0, 0]], 
+                      columns=list("abc")),
+        "d",
+        pd.Series(data=[0.,0.,0.,0.]),
+        KeyError)
     ])
 def test_normalize_lc(test_input_df, test_input_colname, expected,expected_raises):
     """Test how normalize_lc function works for arrays of positive integers."""
