@@ -3,6 +3,7 @@
 import pandas as pd
 import pytest
 import numpy as np
+import pandas.testing as pdt
 
 @pytest.mark.parametrize(
     "test_df, test_colname, expected",
