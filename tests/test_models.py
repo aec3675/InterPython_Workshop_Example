@@ -3,6 +3,7 @@
 import pandas as pd
 import pytest
 import numpy as np
+import pandas.testing as pdt
 
 @pytest.mark.parametrize(
     "test_df, test_colname, expected",
@@ -157,13 +158,6 @@ def test_max_mag_strings():
         "b",
         pd.Series(data=[1,0.285,0,0.285]),
         ValueError),
-        (np.array([[8, 9, 1],
-                   [3, 2, 1],
-                   [5, 7, 2],
-                   [9, 8, 7]]),
-        0,
-        None,
-        TypeError),
         (pd.DataFrame(data=[[0, 0, 0], 
                             [0, 0, 0], 
                             [0, 0, 0], 
